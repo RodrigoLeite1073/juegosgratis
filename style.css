@@ -17,9 +17,7 @@
 
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  /*place-items: center;*/
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -30,17 +28,31 @@ h1 {
   text-align: center;
 }
 header {
-  height: 20vh;
+  position: sticky;
+  top: 0;
+  height: 30px;
+  width: 100%;
   background-color: #f00;
 }
 main {
-  height: 70vh;
-  background-color: #777;
+  width: 100%;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #777;
+  text-align: center;
 }
 footer {
+  position: sticky;
+  bottom: 0;
   height: 10vh;
   background-color: #00f;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 @media (prefers-color-scheme: light) {
@@ -51,6 +63,21 @@ footer {
 }
 
 .card-container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
+}
+
+.short-description-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  background-color: #222;
+  margin: 0.5rem;
+  padding: 0.3rem 0.3rem 0.8rem 0.3rem;
+}
+.stars img {
+  width: 1.5rem;
+  margin: 0.5rem;
 }

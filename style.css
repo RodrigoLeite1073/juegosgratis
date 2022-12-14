@@ -30,9 +30,9 @@ h1 {
 header {
   position: sticky;
   top: 0;
-  height: 30px;
+  height: 10vh;
   width: 100%;
-  background-color: #f00;
+  background-color: #444;
 }
 main {
   width: 100%;
@@ -46,8 +46,8 @@ main {
 footer {
   position: sticky;
   bottom: 0;
-  height: 10vh;
-  background-color: #00f;
+  height: 6vh;
+  background-color: #111;
 }
 
 img {

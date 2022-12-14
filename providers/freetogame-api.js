@@ -5,7 +5,6 @@ export async function getAll() {
       'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
     },
   }
-  console.log('fetch')
   let games
   await fetch(
     'https://free-to-play-games-database.p.rapidapi.com/api/games',
@@ -13,7 +12,6 @@ export async function getAll() {
   )
     .then(res => res.json())
     .then(data => {
-      console.log('data', data)
       games = data
     })
     .catch(err => console.log('error', err))

@@ -1,3 +1,4 @@
+import './styles/card-container.css'
 import { card } from './short-description-card'
 
 export function shortDescriptionList(list) {

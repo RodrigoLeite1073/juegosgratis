@@ -1,0 +1,12 @@
+.short-description-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #222;
+  margin: 0.5rem;
+  padding: 0.3rem 0.3rem 0.8rem 0.3rem;
+}
+
+.short-description-card h3 {
+  color: var(--primary_color);
+}

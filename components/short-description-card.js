@@ -1,3 +1,4 @@
+import './styles/card-style.css'
 import { createStar } from './star-rating'
 
 export function card(obj) {
@@ -12,7 +13,7 @@ export function card(obj) {
     <h3>${title}</h3>
       <p>${short_description}</p>
       <div id="${id}" class="stars">
-      ${createStar()}
+      ${createStar(id)}
       </div>
   </article>
   `

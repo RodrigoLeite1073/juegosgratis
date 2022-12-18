@@ -7,6 +7,7 @@ export function card(obj) {
   return `
   <article class="short-description-card">
       <img
+        class = "img-card"
         src="${thumbnail}"
         alt="thumbnail"
       />

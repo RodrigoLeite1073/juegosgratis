@@ -3,9 +3,9 @@ import './providers/freetogame-api.js'
 import { getAll } from './providers/freetogame-api.js'
 import { shortDescriptionList } from './components/short-description-list'
 import { getRating, rating } from './components/star-rating'
+import { heroAnimation, heroImage } from './components/hero-image'
 
-const $main = document.querySelector('main'),
-  $cardContainer = document.querySelector('.card-container')
+const $cardContainer = document.querySelector('.card-container')
 
 window.addEventListener('DOMContentLoaded', async e => {
   getRating()
@@ -16,11 +16,11 @@ window.addEventListener('DOMContentLoaded', async e => {
 })
 
 window.addEventListener('click', e => {
-  if (!e.target.matches('.star')) {
-    console.log('no es estrella')
-    return false
+  if (e.target.matches('.star')) {
+    const parentId = e.target.parentNode.id,
+      ratingAmount = e.target.dataset.rating
+    rating(ratingAmount, parentId)
+  } else if (e.target.matches('.img-card')) {
+    const $heroImg = heroImage(e.target)
   }
-  const parentId = e.target.parentNode.id,
-    ratingAmount = e.target.dataset.rating
-  rating(ratingAmount, parentId)
 })

@@ -3,18 +3,6 @@ let ratingList = {}
 export function createStar(id) {
   const ratingById = ratingList[id] || 0
   let stars = ''
-  /*if (ratingById > 0) {
-    for (let i = 1; i <= ratingById; i++) {
-      stars += `
-      <img
-        data-rating = "${i}"
-        class="star"
-        src="./public/star_active.svg"
-        alt="star"
-      />
-    `
-    }
-  }*/
 
   for (let i = 1; i < 6; i++) {
     let star
@@ -36,7 +24,8 @@ export function createStar(id) {
 }
 
 export function rating(ratingAmount, parentId) {
-  const stars = document.querySelectorAll(`div[id = "${parentId}"] .star`)
+  const stars = parentId.querySelectorAll(`.star`),
+    id = parentId.id
 
   for (let i = 0; i < 5; i++) {
     stars[i].setAttribute('src', 'public/star.svg')
@@ -45,7 +34,7 @@ export function rating(ratingAmount, parentId) {
     stars[i].setAttribute('src', 'public/star_active.svg')
   }
 
-  saveRating(parentId, ratingAmount)
+  saveRating(id, ratingAmount)
 }
 
 function saveRating(id, rating) {

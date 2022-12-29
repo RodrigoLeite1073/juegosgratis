@@ -16,18 +16,22 @@ export function heroImage(el) {
 
 export function heroAnimation(rect, hero) {
   const endPosX = (window.innerWidth - rect.width) / 2,
-    endPosY = (window.innerHeight - rect.height) / 2,
+    endPosY = window.innerHeight * 0.1,
     distX = endPosX - rect.left,
     distY = endPosY - rect.top
+  console.log('Y ', endPosY)
   anime({
     targets: '.hero-img',
     translateX: distX,
     translateY: distY,
-    scale: 4,
+    scale: 1,
     duration: 1500,
     complete: anim => {
       //hero.setAttribute('style', 'display:none;')
-      hero.remove()
+      setTimeout(() => {
+        /*hero.remove()*/
+        hero.setAttribute('style', 'display: none')
+      }, 1000)
     },
   })
 }

@@ -1,3 +1,4 @@
+import './reset_css/reset.css'
 import './style.css'
 import './providers/freetogame-api.js'
 import { getAll, getById } from './providers/freetogame-api.js'
@@ -23,10 +24,8 @@ window.addEventListener('click', e => {
       ratingAmount = e.target.dataset.rating
     rating(ratingAmount, parentId)
   } else if (e.target.matches('.img-card')) {
-    //const $heroImg = heroImage(e.target)
-    const parentId = e.target.parentNode.id
+    const parentId = e.target.parentNode.dataset.id
     showDetail(parentId)
   } else {
-    document.querySelector('.game-detail').remove()
   }
 })

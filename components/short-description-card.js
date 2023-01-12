@@ -5,7 +5,7 @@ export function card(obj) {
   const { id, title, thumbnail, short_description } = obj
 
   return `
-  <article id="${id}" class="short-description-card">
+  <article id="id_${id}" class="short-description-card" data-id=${id}>
       <img
         class = "img-card"
         src="${thumbnail}"

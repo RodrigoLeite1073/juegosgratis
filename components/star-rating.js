@@ -25,7 +25,7 @@ export function createStar(id) {
 
 export function rating(ratingAmount, parentId) {
   const stars = parentId.querySelectorAll(`.star`),
-    id = parentId.id
+    id = parentId.dataset.id
 
   for (let i = 0; i < 5; i++) {
     stars[i].setAttribute('src', 'public/star.svg')

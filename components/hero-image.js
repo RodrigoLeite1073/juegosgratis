@@ -36,7 +36,6 @@ export function heroAnimation(rectOrigin) {
   window.scrollTo(0, 0);
   anime
     .timeline({
-      duration: 2000,
       easing: "easeInOutCubic",
     })
     .add({
@@ -49,7 +48,7 @@ export function heroAnimation(rectOrigin) {
     })
     .add({
       targets: ".game-detail article",
-      duration: 2000,
+      duration: 1000,
       opacity: 1,
       complete: () => $heroImg.remove(),
     });

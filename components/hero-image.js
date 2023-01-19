@@ -20,7 +20,6 @@ export function heroAnimation(rectOrigin) {
   const rectDesti = $imgDesti.getBoundingClientRect();*/
   const $header = document.querySelector("header");
   const rectHeader = $header.getBoundingClientRect();
-  console.log(rectHeader);
   const $heroImg = document.querySelector(".hero-img");
   const vw = window.innerWidth;
   const vh = window.innerHeight;

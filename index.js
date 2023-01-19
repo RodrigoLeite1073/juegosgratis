@@ -7,5 +7,7 @@ export default async function index() {
   const $cardContainer = document.querySelector(".card-container");
   const data = await getAll();
   const template = shortDescriptionList(data);
+  const $gameDetail = document.querySelector(".game-detail");
+  /*if ($gameDetail) $gameDetail.remove();*/
   $cardContainer.innerHTML = template;
 }

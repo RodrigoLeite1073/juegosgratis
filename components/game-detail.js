@@ -32,9 +32,6 @@ export async function showDetail(id) {
     $main.appendChild($section);
     heroImage($heroImg, id);
   } else {
-    alert("recargando");
-    //$main.innerHTML = "";
     $main.appendChild($section);
-    //document.querySelector("game-detail article").style.opacity = 1;
   }
 }

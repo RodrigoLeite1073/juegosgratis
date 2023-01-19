@@ -57,9 +57,9 @@ async function Re(e = 0) {
     .then(a => a)
     .catch(a => console.log("error", a));
 }
-let q = {};
-function _e(e) {
-  const r = q[e] || 0;
+let _ = {};
+function qe(e) {
+  const r = _[e] || 0;
   let t = "";
   for (let a = 1; a < 6; a++) {
     let n;
@@ -75,7 +75,7 @@ function _e(e) {
   }
   return t;
 }
-function qe(e, r) {
+function _e(e, r) {
   const t = r.querySelectorAll(".star"),
     a = r.dataset.id;
   for (let n = 0; n < 5; n++) t[n].setAttribute("src", "star.svg");
@@ -83,13 +83,13 @@ function qe(e, r) {
   He(a, e);
 }
 function He(e, r) {
-  q[e] = r;
-  const t = JSON.stringify(q);
+  _[e] = r;
+  const t = JSON.stringify(_);
   localStorage.setItem("rating", t);
 }
 function ze() {
   const e = localStorage.getItem("rating") || "{}";
-  q = JSON.parse(e);
+  _ = JSON.parse(e);
 }
 function Ne(e) {
   const { id: r, title: t, thumbnail: a, short_description: n } = e,
@@ -107,7 +107,7 @@ function Ne(e) {
         <p>${n}</p>
       </a>
       <div  class="stars">
-      ${_e(r)}
+      ${qe(r)}
       </div>
   </article>
   `;
@@ -644,7 +644,7 @@ function tr(e) {
 function nr(e) {
   return oe({ x: L(e, "x1"), y: L(e, "y1") }, { x: L(e, "x2"), y: L(e, "y2") });
 }
-function Te(e) {
+function Se(e) {
   for (var r = e.points, t = 0, a, n = 0; n < r.numberOfItems; n++) {
     var o = r.getItem(n);
     n > 0 && (t += oe(a, o)), (a = o);
@@ -653,9 +653,9 @@ function Te(e) {
 }
 function ar(e) {
   var r = e.points;
-  return Te(e) + oe(r.getItem(r.numberOfItems - 1), r.getItem(0));
+  return Se(e) + oe(r.getItem(r.numberOfItems - 1), r.getItem(0));
 }
-function Se(e) {
+function Te(e) {
   if (e.getTotalLength) return e.getTotalLength();
   switch (e.tagName.toLowerCase()) {
     case "circle":
@@ -665,13 +665,13 @@ function Se(e) {
     case "line":
       return nr(e);
     case "polyline":
-      return Te(e);
+      return Se(e);
     case "polygon":
       return ar(e);
   }
 }
 function ir(e) {
-  var r = Se(e);
+  var r = Te(e);
   return e.setAttribute("stroke-dasharray", r), r;
 }
 function or(e) {
@@ -702,7 +702,7 @@ function sr(e, r) {
   var t = f.str(e) ? xe(e)[0] : e,
     a = r || 100;
   return function (n) {
-    return { property: n, el: t, svg: Ce(t), totalLength: Se(t) * (a / 100) };
+    return { property: n, el: t, svg: Ce(t), totalLength: Te(t) * (a / 100) };
   };
 }
 function ur(e, r, t) {
@@ -971,19 +971,19 @@ function mr(e) {
     })
   );
 }
-var S = [],
+var T = [],
   Ee = (function () {
     var e;
     function r() {
       !e &&
         (!he() || !y.suspendWhenDocumentHidden) &&
-        S.length > 0 &&
+        T.length > 0 &&
         (e = requestAnimationFrame(t));
     }
     function t(n) {
-      for (var o = S.length, s = 0; s < o; ) {
-        var u = S[s];
-        u.paused ? (S.splice(s, 1), o--) : (u.tick(n), s++);
+      for (var o = T.length, s = 0; s < o; ) {
+        var u = T[s];
+        u.paused ? (T.splice(s, 1), o--) : (u.tick(n), s++);
       }
       e = s > 0 ? requestAnimationFrame(t) : void 0;
     }
@@ -991,7 +991,7 @@ var S = [],
       !y.suspendWhenDocumentHidden ||
         (he()
           ? (e = cancelAnimationFrame(e))
-          : (S.forEach(function (n) {
+          : (T.forEach(function (n) {
               return n._onDocumentVisibility();
             }),
             Ee()));
@@ -1057,8 +1057,8 @@ function y(e) {
           })[0] || M);
       for (
         var O = C(h - M.start - M.delay, 0, M.duration) / M.duration,
-          _ = isNaN(O) ? 1 : M.easing(O),
-          T = M.to.strings,
+          q = isNaN(O) ? 1 : M.easing(O),
+          S = M.to.strings,
           W = M.round,
           K = [],
           Fe = M.to.numbers.length,
@@ -1071,18 +1071,18 @@ function y(e) {
           ue = M.to.numbers[F],
           ce = M.from.numbers[F] || 0;
         M.isPath
-          ? (V = ur(M.value, _ * ue, M.isPathTargetInsideSVG))
-          : (V = ce + _ * (ue - ce)),
+          ? (V = ur(M.value, q * ue, M.isPathTargetInsideSVG))
+          : (V = ce + q * (ue - ce)),
           W && ((M.isColor && F > 2) || (V = Math.round(V * W) / W)),
           K.push(V);
       }
-      var fe = T.length;
+      var fe = S.length;
       if (!fe) k = K[0];
       else {
-        k = T[0];
+        k = S[0];
         for (var j = 0; j < fe; j++) {
-          T[j];
-          var le = T[j + 1],
+          S[j];
+          var le = S[j + 1],
             Z = K[j];
           isNaN(Z) || (le ? (k += Z + le) : (k += Z + " "));
         }
@@ -1171,7 +1171,7 @@ function y(e) {
     }),
     (i.play = function () {
       !i.paused ||
-        (i.completed && i.reset(), (i.paused = !1), S.push(i), l(), Ee());
+        (i.completed && i.reset(), (i.paused = !1), T.push(i), l(), Ee());
     }),
     (i.reverse = function () {
       d(), (i.completed = !i.reversed), l();
@@ -1203,8 +1203,8 @@ function Oe(e, r) {
   !t.length && !a.length && r.pause();
 }
 function pr(e) {
-  for (var r = se(e), t = S.length; t--; ) {
-    var a = S[t];
+  for (var r = se(e), t = T.length; t--; ) {
+    var a = T[t];
     Oe(r, a);
   }
 }
@@ -1242,16 +1242,16 @@ function yr(e, r) {
         b = Math.max.apply(Math, v);
       }
       a &&
-        (v = v.map(function (T) {
-          return a(T / b) * b;
+        (v = v.map(function (S) {
+          return a(S / b) * b;
         })),
         t === "reverse" &&
-          (v = v.map(function (T) {
-            return o ? (T < 0 ? T * -1 : -T) : Math.abs(b - T);
+          (v = v.map(function (S) {
+            return o ? (S < 0 ? S * -1 : -S) : Math.abs(b - S);
           }));
     }
-    var _ = c ? (m - l) / b : l;
-    return p + _ * (Math.round(v[h] * 100) / 100) + I;
+    var q = c ? (m - l) / b : l;
+    return p + q * (Math.round(v[h] * 100) / 100) + I;
   };
 }
 function br(e) {
@@ -1260,9 +1260,9 @@ function br(e) {
   return (
     (r.duration = 0),
     (r.add = function (t, a) {
-      var n = S.indexOf(r),
+      var n = T.indexOf(r),
         o = r.children;
-      n > -1 && S.splice(n, 1);
+      n > -1 && T.splice(n, 1);
       function s(m) {
         m.passThrough = !0;
       }
@@ -1294,7 +1294,7 @@ function br(e) {
 y.version = "3.2.1";
 y.speed = 1;
 y.suspendWhenDocumentHidden = !0;
-y.running = S;
+y.running = T;
 y.remove = pr;
 y.get = ae;
 y.set = Ae;
@@ -1341,7 +1341,7 @@ async function wr(e) {
         </a>
     </article>
       `),
-    c ? (r.appendChild(d), xr(c)) : (alert("recargando"), r.appendChild(d));
+    c ? (r.appendChild(d), xr(c)) : r.appendChild(d);
 }
 function xr(e, r) {
   const t = e.getBoundingClientRect(),
@@ -1357,9 +1357,8 @@ function xr(e, r) {
     Mr(t);
 }
 function Mr(e) {
-  const t = document.querySelector("header").getBoundingClientRect();
-  console.log(t);
-  const a = document.querySelector(".hero-img"),
+  const t = document.querySelector("header").getBoundingClientRect(),
+    a = document.querySelector(".hero-img"),
     n = window.innerWidth,
     o = (n * 0.7) / e.width,
     s = (n - e.width) / 2,
@@ -1389,7 +1388,7 @@ async function ke() {
   const e = document.querySelector(".card-container"),
     r = await je(),
     t = Ue(r);
-  e.innerHTML = t;
+  document.querySelector(".game-detail"), (e.innerHTML = t);
 }
 function Be() {
   const e = document.location,
@@ -1410,7 +1409,7 @@ window.addEventListener("click", e => {
   if (e.target.matches(".star")) {
     const r = e.target.parentNode.parentNode,
       t = e.target.dataset.rating;
-    qe(t, r);
+    _e(t, r);
   }
 });
 window.addEventListener("hashchange", () => {

@@ -4,10 +4,14 @@ import { getAll } from "./providers/freetogame-api";
 
 export default async function index() {
   getRating();
-  const $cardContainer = document.querySelector(".card-container");
+  const $main = document.querySelector("main");
+  const $root = document.createElement("div");
   const data = await getAll();
   const template = shortDescriptionList(data);
-  const $gameDetail = document.querySelector(".game-detail");
-  /*if ($gameDetail) $gameDetail.remove();*/
-  $cardContainer.innerHTML = template;
+  $root.classList.add("base");
+  //const $gameDetail = document.querySelector(".game-detail");
+  //if ($gameDetail) $gameDetail.remove();
+  $root.innerHTML = template;
+  $main.innerHTML = "";
+  $main.appendChild($root);
 }

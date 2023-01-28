@@ -4,12 +4,12 @@ import { createStar } from "./star-rating";
 export function card(obj) {
   const { id, title, thumbnail, short_description } = obj;
   const hash = title.replace(/\s/g, "_");
-  const base = location.origin;
-  const url = `${base}#/${hash}/search?game_id=${id}`;
+  const base = location.pathname;
+  const url = `${base}#/${hash}/?game_id=${id}`;
 
   return `
   <article id="id_${id}" class="short-description-card" data-id=${id}>
-      <a href="${url}">
+      <a class="to-game" href=${url}>
         <img
           class = "img-card"
           src="${thumbnail}"

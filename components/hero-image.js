@@ -1,28 +1,30 @@
 import anime from "animejs/lib/anime.es.js";
+import { getRect } from "../helpers/rectManager";
+import { getById } from "../providers/freetogame-api";
 import { showDetail } from "./game-detail";
 
-export function heroImage(heroImg, parentId) {
-  const rectOrigin = heroImg.getBoundingClientRect();
+export async function heroImage($img, id) {
+  const rectOrigin = $img.getBoundingClientRect();
+  const data = await getById(id);
   const $heroImg = document.createElement("img");
-  const $body = document.querySelector("body");
+  const $main = document.querySelector("main");
   $heroImg.setAttribute("class", "hero-img");
-  $heroImg.src = heroImg.src;
+  $heroImg.src = data.thumbnail;
   $heroImg.setAttribute(
     "style",
     `position: fixed; top: ${rectOrigin.top}px; left:${rectOrigin.left}px; width: ${rectOrigin.width}px; height: ${rectOrigin.height}px; `
   );
-  $body.appendChild($heroImg);
-  heroAnimation(rectOrigin);
+  window.scrollTo(0, 0);
+  $main.appendChild($heroImg);
+  heroAnimation(rectOrigin, data);
 }
 
-export function heroAnimation(rectOrigin) {
-  /*const $imgDesti = document.querySelector(`#id_${parentId}`);
-  const rectDesti = $imgDesti.getBoundingClientRect();*/
+export function heroAnimation(rectOrigin, data) {
   const $header = document.querySelector("header");
   const rectHeader = $header.getBoundingClientRect();
-  const $heroImg = document.querySelector(".hero-img");
+  //const $heroImg = document.querySelector(".hero-img");
   const vw = window.innerWidth;
-  const vh = window.innerHeight;
+  //const vh = window.innerHeight;
   const scaleFact = (vw * 0.7) / rectOrigin.width;
   const endPosX = (vw - rectOrigin.width) / 2;
   const endPosY =
@@ -32,23 +34,16 @@ export function heroAnimation(rectOrigin) {
   const distX = endPosX - rectOrigin.left;
   const distY = endPosY - rectOrigin.top;
 
-  window.scrollTo(0, 0);
-  anime
-    .timeline({
-      easing: "easeInOutCubic",
-    })
-    .add({
-      targets: ".hero-img",
-      translateX: distX,
-      translateY: distY,
-      scale: scaleFact,
-      duration: 500,
-      complete: () => {},
-    })
-    .add({
-      targets: ".game-detail article",
-      duration: 1000,
-      opacity: 1,
-      complete: () => $heroImg.remove(),
-    });
+  anime({
+    easing: "easeInOutCubic",
+    targets: ".hero-img",
+    translateX: distX,
+    translateY: distY,
+    scale: scaleFact,
+    duration: 1000,
+    complete: anim => {
+      console.log(anim);
+      showDetail(data);
+    },
+  });
 }

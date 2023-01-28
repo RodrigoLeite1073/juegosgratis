@@ -28,8 +28,6 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
   text-align: center;
 }
 img {
@@ -53,7 +51,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--secundary_bg_color);
   text-align: center;
 }
 /*footer {*/
@@ -68,11 +65,17 @@ img {
   height: auto;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+/*@media (prefers-color-scheme: light) {*/
+/*:root {*/
+/*color: #213547;*/
+/*background-color: #ffffff;*/
+/*}*/
+/*}*/
+.base {
+  width: 100vw;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .stars img {
@@ -97,27 +100,16 @@ img {
   z-index: 10;
 }
 
-/*.game-detail {*/
-/*display: flex;*/
-/*flex-direction: column;*/
-/*align-items: centeo;*/
-/*width: 100vw;*/
-/*}*/
-
-.game-detail article {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  /*opacity: 0;*/
+.game-detail {
+  display: absolute;
+  /*display: flex;*/
   height: 100vh;
-  flex-direction: column;
-  align-items: center;
-  /*justify-content: center;*/
+  width: 100vw;
+  top: 0;
+  right: 0;
+  left: 0;
   padding: 1rem;
   background-color: var(--bg_color);
-  /*visibility: hidden;*/
 }
 
 .game-detail a {
@@ -125,7 +117,7 @@ img {
 }
 
 .game-detail h2 {
-  font-size: calc(2rem + 1vw);
+  font-size: calc(1rem + 1vw);
   color: var(--primary_color);
   margin: 1rem;
 }
@@ -171,4 +163,10 @@ img {
   border-radius: 5px;
   text-align: center;
   font-weight: 700;
+}
+
+.carrusel-container {
+  width: 80vw;
+  height: 20vh;
+  background-color: var(--text_color);
 }

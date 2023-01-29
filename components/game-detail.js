@@ -22,7 +22,6 @@ export function showDetail(infoData) {
           ${data.description}
         </p>
         </div>
-        <div class = "carrusel-container"></div>
         <a href="${data.game_url}" target="_blank">
           <div class="play-btn">JUGAR</div>
         </a>

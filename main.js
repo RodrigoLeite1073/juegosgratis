@@ -5,6 +5,7 @@ import { getRating, rating } from "./components/star-rating";
 import router from "./helpers/router";
 import { setRect } from "./helpers/rectManager";
 import { heroImage } from "./components/hero-image";
+import gameImgModal from "./components/game-img-modal";
 
 const $cardContainer = document.querySelector(".card-container");
 
@@ -32,6 +33,8 @@ window.addEventListener("click", e => {
       "pagina 1",
       urlString
     );
+  } else if (e.target.matches(".carousel__img")) {
+    gameImgModal(e.target.src);
   }
 });
 

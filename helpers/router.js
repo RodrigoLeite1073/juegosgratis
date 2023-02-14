@@ -13,9 +13,7 @@ export default async function router() {
   } else if (hash.includes("?")) {
     const searchParams = new URLSearchParams(href.match(regex)[0]);
     const gameId = searchParams.get("game_id");
-    console.log("router id", gameId);
     const data = await getById(gameId);
-    console.log("router", data);
     showDetail(data);
   }
 }

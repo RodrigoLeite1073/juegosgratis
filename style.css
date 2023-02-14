@@ -1,10 +1,14 @@
+html {
+  font-size: calc(15px + 0.390625vw);
+}
 :root {
   --bg_color: #242424;
+  --bg_color_alpha: #242424cc;
   --secundary_bg_color: #ccc;
   --text_color: #fff8;
   --primary_color: #ff7940;
   --secundary_color: #07f;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Allerta Stencil", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -101,8 +105,9 @@ img {
 }
 
 .game-detail {
-  display: absolute;
-  /*display: flex;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -117,28 +122,29 @@ img {
 }
 
 .game-detail h2 {
-  font-size: calc(1rem + 1vw);
+  font-size: calc(1px + 5vw);
   color: var(--primary_color);
-  margin: 1rem;
+  margin: 3rem;
 }
 
 .game-detail__hero-img {
-  width: 70vw;
+  width: 60vw;
 }
 
 .game-detail .description-container {
-  height: 20vh;
+  min-height: 20vh;
+  width: 90vw;
   overflow: auto;
-  font-size: calc(0.3rem + 1vw);
-  line-height: calc(0.3rem + 1vw);
-  text-align: justify;
-  /*margin-top: 1rem;*/
+  font-size: calc(1px + 3vw);
+  line-height: calc(1px + 3vw);
+  text-align: left;
+  margin: 1rem 0;
 }
-.game-detail .props {
+.game-detail__info {
+  font-size: calc(1px + 3vw);
   display: flex;
   width: 100%;
   justify-content: space-between;
-  font-size: calc(0.5rem + 1vw);
 }
 
 .game-detail .play-btn {
@@ -165,8 +171,41 @@ img {
   font-weight: 700;
 }
 
-.carrusel-container {
-  width: 80vw;
-  height: 20vh;
-  background-color: var(--text_color);
+.carousel__img {
+  width: 90vw;
+  height: auto;
+}
+.glide__arrow {
+  top: 50%;
+  font-size: calc(1rem * 1vw);
+}
+.glide__arrow--left {
+  left: 4vw;
+}
+.glide__arrow--right {
+  right: 4vw;
+}
+.glide__bullets {
+  top: 100%;
+}
+.game-img-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg_color_alpha);
+  z-index: 10;
+}
+.game-img-modal__container {
+  position: relative;
+  touch-action: manipulation;
+}
+.game-img-modal img {
+  width: 100vw;
+}
+@media screen and (min-width: 480px) {
 }

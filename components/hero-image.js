@@ -14,6 +14,7 @@ export async function heroImage($img, id) {
     "style",
     `position: fixed; top: ${rectOrigin.top}px; left:${rectOrigin.left}px; width: ${rectOrigin.width}px; height: ${rectOrigin.height}px; `
   );
+  $main.innerHTML = "";
   window.scrollTo(0, 0);
   $main.appendChild($heroImg);
   heroAnimation(rectOrigin, data);
@@ -40,9 +41,8 @@ export function heroAnimation(rectOrigin, data) {
     translateX: distX,
     translateY: distY,
     scale: scaleFact,
-    duration: 1000,
+    duration: 500,
     complete: anim => {
-      console.log(anim);
       showDetail(data);
     },
   });

@@ -35,6 +35,13 @@ window.addEventListener("click", e => {
     );
   } else if (e.target.matches(".carousel__img")) {
     gameImgModal(e.target.src);
+    window.history.pushState(
+      {
+        pagina: history.length - 1,
+      },
+      "pagina 1",
+      e.target.src + "/detail"
+    );
   }
 });
 

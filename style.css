@@ -1,5 +1,5 @@
 html {
-  font-size: calc(15px + 0.390625vw);
+  text-align: center;
 }
 :root {
   --bg_color: #242424;
@@ -8,6 +8,15 @@ html {
   --text_color: #fff8;
   --primary_color: #ff7940;
   --secundary_color: #07f;
+  --step--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
+  --step--1: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
+  --step-0: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  --step-1: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
+  --step-2: clamp(1.62rem, calc(1.5rem + 0.58vw), 1.95rem);
+  --step-3: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
+  --step-4: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
+  --step-5: clamp(2.8rem, calc(2.45rem + 1.77vw), 3.82rem);
+
   font-family: "Allerta Stencil", sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -26,13 +35,16 @@ html {
 
 body {
   margin: 0;
-  place-items: center;
-  max-width: 1200px;
+  text-align: center;
   min-height: 100vh;
 }
 
 h1 {
+  font-size: var(--step-2);
   text-align: center;
+  margin-inline: auto;
+  color: var(--primary_color);
+  font-weight: bold;
 }
 img {
   display: inline-block;
@@ -46,6 +58,8 @@ header {
   height: 10vh;
   width: 100%;
   background-color: #444;
+  display: flex;
+  place-items: center;
 }
 main {
   position: relative;
@@ -122,7 +136,7 @@ img {
 }
 
 .game-detail h2 {
-  font-size: calc(1px + 5vw);
+  font-size: var(--step-1);
   color: var(--primary_color);
   margin: 3rem;
 }
@@ -135,13 +149,12 @@ img {
   min-height: 20vh;
   width: 90vw;
   overflow: auto;
-  font-size: calc(1px + 3vw);
-  line-height: calc(1px + 3vw);
+  font-size: var(--step--1);
+  line-height: var(--step--1);
   text-align: left;
   margin: 1rem 0;
 }
 .game-detail__info {
-  font-size: calc(1px + 3vw);
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -177,7 +190,7 @@ img {
 }
 .glide__arrow {
   top: 50%;
-  font-size: calc(1rem * 1vw);
+  font-size: var(--step-1);
 }
 .glide__arrow--left {
   left: 4vw;
